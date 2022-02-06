@@ -1,7 +1,7 @@
 # PROYECTO1T
 
 · Proyecto de una tienda de cigarrillos electrónicos / vape. Se tratan herencias, polimorfismos y programación
-orientada a objetos. 
+orientada a objetos, subida a heroku. 
 
 ## SRC ✏️
 
@@ -13,11 +13,7 @@ orientada a objetos.
 
 - Con los schemas de las clases, para poder tratar los datos entre la aplicación y la BD.
 
-· Contiene la carpeta utils
-
-- Con los útiles (menu y entrada por teclado) y las funciones.
-
-· Contiene el archivo index
+· Contiene el archivo server.js
 
 - Es el archivo principal.
 
@@ -28,4 +24,3 @@ orientada a objetos.
 · Incorporación proyecto a Mongo Atlas.
 
 > Ismael García Vela 22/11/21
-> ¡Recuerda instalar los módulos y compilar!
