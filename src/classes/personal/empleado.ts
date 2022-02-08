@@ -7,12 +7,9 @@ export class Empleado extends Persona {
     direccion: { calle: string; numero: number },
     telefono: number,
     email: string,
-    password: string,
-    fechanacimiento: Date,
     puesto: string,
-    socio: boolean
   ) {
-    super(id, nombre, direccion, telefono, email, password, fechanacimiento, socio);
+    super(id, nombre, direccion, telefono, email);
     this._puesto = puesto;
   }
   get puesto() {

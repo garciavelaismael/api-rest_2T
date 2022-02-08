@@ -20,10 +20,6 @@ const clienteSchema = new Schema({
   _email: {
     type: String,
   },
-  _password: {
-    type: String,
-    required: true
-  },
   _fechanacimiento: {
     type: Date,
   },
@@ -45,7 +41,6 @@ export type tCliente = {
   } | null;
   _telefono: number | null;
   _email: string | null;
-  _password: string | null;
   _fechanacimiento: Date | null;
   _socio: Boolean | null;
   _carrito: Array<Producto>;

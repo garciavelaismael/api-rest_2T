@@ -56,7 +56,7 @@ class Routes {
 
   // Añadir empleado
   private addEmpleado = async (req: Request, res: Response) => {
-    const { id, nombre, direccion, telefono, email, password, fechanacimiento, puesto, socio } = req.body
+    const { id, nombre, direccion, telefono, email, puesto } = req.body
     await db.conectarBD()
     const dSchema = {
       _id: id,
@@ -64,10 +64,7 @@ class Routes {
       _direccion: direccion,
       _telefono: telefono,
       _email: email,
-      _password: password,
-      _fechanacimiento: fechanacimiento,
       _puesto: puesto,
-      _socio: socio,
     }
     const oSchema = new EmpleadoDB(dSchema)
     await oSchema.save()
@@ -79,7 +76,7 @@ class Routes {
 
   // Añadir cliente
   private addCliente = async (req: Request, res: Response) => {
-    const { id, nombre, direccion, telefono, email, password, fechanacimiento, socio } = req.body
+    const { id, nombre, direccion, telefono, email, fechanacimiento, socio } = req.body
     await db.conectarBD()
     const dSchema = {
       _id: id,
@@ -87,7 +84,6 @@ class Routes {
       _direccion: direccion,
       _telefono: telefono,
       _email: email,
-      _password: password,
       _fechanacimiento: fechanacimiento,
       _socio: socio,
       _carrito: [],
@@ -104,7 +100,7 @@ class Routes {
   private updateEmpleado = async (req: Request, res: Response) => {
     await db.conectarBD()
     const id = req.params.id
-    const { nombre, direccion, telefono, email, password, fechanacimiento, puesto, socio } = req.body
+    const { nombre, direccion, telefono, email, puesto } = req.body
     await EmpleadoDB.findOneAndUpdate(
         { _id: id },
         {
@@ -113,10 +109,7 @@ class Routes {
           _direccion: direccion,
           _telefono: telefono,
           _email: email,
-          _password: password,
-          _fechanacimiento: fechanacimiento,
           _puesto: puesto,
-          _socio: socio,
         },
         {
             new: true,
@@ -133,7 +126,7 @@ class Routes {
   private updateCliente = async (req: Request, res: Response) => {
     await db.conectarBD()
     const id = req.params.id
-    const { nombre, direccion, telefono, email, password, fechanacimiento, socio } = req.body
+    const { nombre, direccion, telefono, email, fechanacimiento, socio } = req.body
     await ClienteDB.findOneAndUpdate(
         { _id: id },
         {
@@ -142,7 +135,6 @@ class Routes {
           _direccion: direccion,
           _telefono: telefono,
           _email: email,
-          _password: password,
           _fechanacimiento: fechanacimiento,
           _socio: socio,
           _carrito: [],

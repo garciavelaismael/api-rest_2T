@@ -21,19 +21,9 @@ const empleadoSchema = new Schema({
   _email: {
     type: String,
   },
-  _password: {
-    type: String,
-    required: true
-  },
-  _fechanacimiento: {
-    type: Date,
-  },
   _puesto: {
     type: String,
-  },
-  _socio: {
-    type: Boolean,
-  },
+  }
 });
 
 export type tEmpleado = {
