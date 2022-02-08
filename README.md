@@ -1,4 +1,4 @@
-# PROYECTO1T
+# API-REST VAPEHUB
 
 · Proyecto de una tienda de cigarrillos electrónicos / vape. Se tratan herencias, polimorfismos y programación
 orientada a objetos, subida a heroku. 
