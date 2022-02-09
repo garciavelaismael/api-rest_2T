@@ -36,8 +36,6 @@ export type tEmpleado = {
   } | null;
   _telefono: number | null;
   _email: string | null;
-  _password: string | null;
-  _fechanacimiento: Date | null;
   _puesto: string | null;
   _socio: Boolean | null;
 };

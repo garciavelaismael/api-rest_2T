@@ -4,6 +4,8 @@ import { Producto } from "../classes/producto/producto";
 const clienteSchema = new Schema({
   _id: {
     type: String,
+    required: true,
+    unique: true
   },
   _nombre: {
     type: String,
@@ -19,9 +21,6 @@ const clienteSchema = new Schema({
   },
   _email: {
     type: String,
-  },
-  _fechanacimiento: {
-    type: Date,
   },
   _socio: {
     type: Boolean,
@@ -41,7 +40,6 @@ export type tCliente = {
   } | null;
   _telefono: number | null;
   _email: string | null;
-  _fechanacimiento: Date | null;
   _socio: Boolean | null;
   _carrito: Array<Producto>;
 };

@@ -1,7 +1,6 @@
 import { Producto } from "../producto/producto";
 import { Persona } from "./persona";
 export class Cliente extends Persona {
-  protected _fechanacimiento: Date;
   protected _carrito: Array<Producto>;
   protected _socio: boolean;
   constructor(
@@ -11,19 +10,14 @@ export class Cliente extends Persona {
     telefono: number,
     email: string,
     socio: boolean,
-    fechanacimiento: Date,
     carrito: Array<Producto>
   ) {
     super(id, nombre, direccion, telefono, email);
     this._carrito = carrito;
-    this._fechanacimiento = fechanacimiento;
     this._socio = socio;
   }
   get carrito() {
     return this._carrito;
-  }
-  get fechanacimiento() {
-    return this._fechanacimiento;
   }
   get socio() {
     return this._socio;

@@ -11,8 +11,6 @@ import { tLiquido, LiquidoDB } from "../schemas/liquido";
 import { tDispositivo, DispositivoDB } from "../schemas/dispositivo";
 import { tCompra, CompraDB } from "../schemas/compras";
 import { Mongoose } from 'mongoose';
-import { CallTracker } from 'assert';
-import { publicEncrypt } from 'crypto';
 
 class Routes {
   private _router: Router
@@ -76,7 +74,7 @@ class Routes {
 
   // Añadir cliente
   private addCliente = async (req: Request, res: Response) => {
-    const { id, nombre, direccion, telefono, email, fechanacimiento, socio } = req.body
+    const { id, nombre, direccion, telefono, email, socio } = req.body
     await db.conectarBD()
     const dSchema = {
       _id: id,
@@ -84,7 +82,6 @@ class Routes {
       _direccion: direccion,
       _telefono: telefono,
       _email: email,
-      _fechanacimiento: fechanacimiento,
       _socio: socio,
       _carrito: [],
     }
@@ -126,7 +123,7 @@ class Routes {
   private updateCliente = async (req: Request, res: Response) => {
     await db.conectarBD()
     const id = req.params.id
-    const { nombre, direccion, telefono, email, fechanacimiento, socio } = req.body
+    const { nombre, direccion, telefono, email, socio } = req.body
     await ClienteDB.findOneAndUpdate(
         { _id: id },
         {
@@ -135,7 +132,6 @@ class Routes {
           _direccion: direccion,
           _telefono: telefono,
           _email: email,
-          _fechanacimiento: fechanacimiento,
           _socio: socio,
           _carrito: [],
         },
