@@ -54,12 +54,12 @@ class Routes {
 
   // Añadir empleado
   private addEmpleado = async (req: Request, res: Response) => {
-    const { id, nombre, direccion, telefono, email, puesto } = req.body
+    const { id, nombre, calle, numero, telefono, email, puesto } = req.body
     await db.conectarBD()
     const dSchema = {
       _id: id,
       _nombre: nombre,
-      _direccion: direccion,
+      _direccion: { calle: calle, numero: numero},
       _telefono: telefono,
       _email: email,
       _puesto: puesto,
@@ -74,12 +74,12 @@ class Routes {
 
   // Añadir cliente
   private addCliente = async (req: Request, res: Response) => {
-    const { id, nombre, direccion, telefono, email, socio } = req.body
+    const { id, nombre, calle, numero, telefono, email, socio } = req.body
     await db.conectarBD()
     const dSchema = {
       _id: id,
       _nombre: nombre,
-      _direccion: direccion,
+      _direccion: { calle: calle, numero: numero},
       _telefono: telefono,
       _email: email,
       _socio: socio,
@@ -97,13 +97,13 @@ class Routes {
   private updateEmpleado = async (req: Request, res: Response) => {
     await db.conectarBD()
     const id = req.params.id
-    const { nombre, direccion, telefono, email, puesto } = req.body
+    const { nombre, calle, numero, telefono, email, puesto } = req.body
     await EmpleadoDB.findOneAndUpdate(
         { _id: id },
         {
           _id: id,
           _nombre: nombre,
-          _direccion: direccion,
+          _direccion: { calle: calle, numero: numero},
           _telefono: telefono,
           _email: email,
           _puesto: puesto,
@@ -123,13 +123,13 @@ class Routes {
   private updateCliente = async (req: Request, res: Response) => {
     await db.conectarBD()
     const id = req.params.id
-    const { nombre, direccion, telefono, email, socio } = req.body
+    const { nombre, calle, numero, telefono, email, socio } = req.body
     await ClienteDB.findOneAndUpdate(
         { _id: id },
         {
           _id: id,
           _nombre: nombre,
-          _direccion: direccion,
+          _direccion: { calle: calle, numero: numero},
           _telefono: telefono,
           _email: email,
           _socio: socio,
