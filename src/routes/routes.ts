@@ -51,6 +51,36 @@ class Routes {
       })
     db.desconectarBD()
   }
+  
+  // Listar dispositivos
+  private listDispositivos = async (req: Request, res: Response) => {
+    await db.conectarBD()
+      .then(async (mensaje) => {
+        const valor = req.params.id
+        console.log(mensaje)
+        const query = await DispositivoDB.find();
+        res.json(query)
+      })
+      .catch((mensaje) => {
+        res.send(mensaje)
+      })
+    db.desconectarBD()
+  }
+  
+  // Listar liquidos
+  private listLiquidos = async (req: Request, res: Response) => {
+    await db.conectarBD()
+      .then(async (mensaje) => {
+        const valor = req.params.id
+        console.log(mensaje)
+        const query = await LiquidoDB.find();
+        res.json(query)
+      })
+      .catch((mensaje) => {
+        res.send(mensaje)
+      })
+    db.desconectarBD()
+  }
 
   // Añadir empleado
   private addEmpleado = async (req: Request, res: Response) => {
@@ -135,7 +165,6 @@ class Routes {
           _telefono: telefono,
           _email: email,
           _socio: socio,
-          _carrito: [],
         },
         {
             new: true,
@@ -177,6 +206,8 @@ class Routes {
     // Listar
     this._router.get('/empleados', this.listEmpleados)
     this._router.get('/clientes', this.listClientes)
+    this._router.get('/dispositivos', this.listDispositivos)
+    this._router.get('/liquidos', this.listLiquidos)
     // Crear
     this._router.post('/empleados/addEmpleado', this.addEmpleado)
     this._router.post('/clientes/addCliente', this.addCliente)
