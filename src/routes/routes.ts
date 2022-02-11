@@ -23,7 +23,7 @@ class Routes {
   }
 
   // Listar empleados
-  private listEmpleados = async (req: Request, res: Response) => {
+  private getEmpleados = async (req: Request, res: Response) => {
     await db.conectarBD()
       .then(async (mensaje) => {
         const valor = req.params.id
@@ -38,7 +38,7 @@ class Routes {
   }
 
   // Listar clientes
-  private listClientes = async (req: Request, res: Response) => {
+  private getClientes = async (req: Request, res: Response) => {
     await db.conectarBD()
       .then(async (mensaje) => {
         const valor = req.params.id
@@ -53,7 +53,7 @@ class Routes {
   }
   
   // Listar dispositivos
-  private listDispositivos = async (req: Request, res: Response) => {
+  private getDispositivos = async (req: Request, res: Response) => {
     await db.conectarBD()
       .then(async (mensaje) => {
         const valor = req.params.id
@@ -68,7 +68,7 @@ class Routes {
   }
   
   // Listar liquidos
-  private listLiquidos = async (req: Request, res: Response) => {
+  private getLiquidos = async (req: Request, res: Response) => {
     await db.conectarBD()
       .then(async (mensaje) => {
         const valor = req.params.id
@@ -201,13 +201,39 @@ class Routes {
     await db.desconectarBD()
 }
 
+  // Buscar empleado
+  private getEmpleadoId = async (req: Request, res: Response) => {
+    await db.conectarBD()
+
+    const id = req.params.id
+    await EmpleadoDB.findOne({ _id: id })
+    .then((doc: any) => res.send('Funciona correctamente.'))
+    .catch((err: any) => res.send('Error: ' + err))
+
+    await db.desconectarBD()
+}
+
+  // Buscar cliente
+  private getClienteId = async (req: Request, res: Response) => {
+    await db.conectarBD()
+
+    const id = req.params.id
+    await ClienteDB.findOne({ _id: id })
+    .then((doc: any) => res.send('Funciona correctamente.'))
+    .catch((err: any) => res.send('Error: ' + err))
+
+    await db.desconectarBD()
+}
+
 // RUTAS
   misRutas() {
     // Listar
-    this._router.get('/empleados', this.listEmpleados)
-    this._router.get('/clientes', this.listClientes)
-    this._router.get('/dispositivos', this.listDispositivos)
-    this._router.get('/liquidos', this.listLiquidos)
+    this._router.get('/empleados', this.getEmpleados)
+    this._router.get('/clientes', this.getClientes)
+    this._router.get('/empleados/:id', this.getEmpleadoId)
+    this._router.get('/clientes/:id', this.getClienteId)
+    this._router.get('/dispositivos', this.getDispositivos)
+    this._router.get('/liquidos', this.getLiquidos)
     // Crear
     this._router.post('/empleados/addEmpleado', this.addEmpleado)
     this._router.post('/clientes/addCliente', this.addCliente)
