@@ -204,24 +204,30 @@ class Routes {
   // Buscar empleado
   private getEmpleadoId = async (req: Request, res: Response) => {
     await db.conectarBD()
-
+    .then(async (mensaje) => {
     const id = req.params.id
-    await EmpleadoDB.findOne({ _id: id })
-    .then((doc: any) => res.send('Funciona correctamente.'))
-    .catch((err: any) => res.send('Error: ' + err))
-
+    console.log(mensaje)
+    const query = await EmpleadoDB.findOne({ _id: id });
+    res.json(query)
+    })
+    .catch((mensaje) => {
+      res.send(mensaje)
+    } )
     await db.desconectarBD()
 }
 
   // Buscar cliente
   private getClienteId = async (req: Request, res: Response) => {
     await db.conectarBD()
-
+    .then(async (mensaje) => {
     const id = req.params.id
-    await ClienteDB.findOne({ _id: id })
-    .then((doc: any) => res.send('Funciona correctamente.'))
-    .catch((err: any) => res.send('Error: ' + err))
-
+    console.log(mensaje)
+    const query = await ClienteDB.findOne({ _id: id });
+    res.json(query)
+    })
+    .catch((mensaje) => {
+      res.send(mensaje)
+    } )
     await db.desconectarBD()
 }
 
