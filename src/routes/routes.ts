@@ -84,7 +84,7 @@ class Routes {
 
   // Añadir empleado
   private addEmpleado = async (req: Request, res: Response) => {
-    const { id, nombre, calle, numero, telefono, email, puesto, ventas } = req.body
+    const { id, nombre, calle, numero, telefono, email, puesto, ventas, horas } = req.body
     await db.conectarBD()
     const dSchema = {
       _id: id,
@@ -93,7 +93,8 @@ class Routes {
       _telefono: telefono,
       _email: email,
       _puesto: puesto,
-      _ventas: ventas
+      _ventas: ventas,
+      _horas: horas
     }
     const oSchema = new EmpleadoDB(dSchema)
     await oSchema.save()
@@ -128,7 +129,7 @@ class Routes {
   private updateEmpleado = async (req: Request, res: Response) => {
     await db.conectarBD()
     const id = req.params.id
-    const { nombre, calle, numero, telefono, email, puesto, ventas } = req.body
+    const { nombre, calle, numero, telefono, email, puesto, ventas, horas } = req.body
     await EmpleadoDB.findOneAndUpdate(
         { _id: id },
         {
@@ -138,7 +139,8 @@ class Routes {
           _telefono: telefono,
           _email: email,
           _puesto: puesto,
-          _ventas: ventas
+          _ventas: ventas,
+          _horas: horas
         },
         {
             new: true,
