@@ -1,6 +1,5 @@
 import { Persona } from "./persona";
 export class Empleado extends Persona {
-  protected _puesto: string;
   protected _ventas: number;
   protected _horas: number;
   constructor(
@@ -9,17 +8,12 @@ export class Empleado extends Persona {
     direccion: { calle: string; numero: number },
     telefono: number,
     email: string,
-    puesto: string,
     ventas: number,
     horas: number,
   ) {
     super(id, nombre, direccion, telefono, email);
-    this._puesto = puesto;
     this._ventas = ventas;
     this._horas = horas;
-  }
-  get puesto() {
-    return this._puesto;
   }
   get ventas() {
     return this._ventas;

@@ -21,9 +21,6 @@ const empleadoSchema = new Schema({
   _email: {
     type: String,
   },
-  _puesto: {
-    type: String,
-  },
   _ventas: {
     type: Number,
   },
@@ -42,7 +39,6 @@ export type tEmpleado = {
   } | null;
   _telefono: number | null;
   _email: string | null;
-  _puesto: string | null;
   _ventas: number | null;
   _horas: number | null;
 };
