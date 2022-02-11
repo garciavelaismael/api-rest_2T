@@ -26,6 +26,9 @@ const empleadoSchema = new Schema({
   },
   _ventas: {
     type: Number,
+  },
+  _horas: {
+    type: Number,
   }
 });
 
@@ -41,6 +44,7 @@ export type tEmpleado = {
   _email: string | null;
   _puesto: string | null;
   _ventas: number | null;
+  _horas: number | null;
 };
 
 export const EmpleadoDB = model("empleados", empleadoSchema);

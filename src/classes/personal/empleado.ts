@@ -2,6 +2,7 @@ import { Persona } from "./persona";
 export class Empleado extends Persona {
   protected _puesto: string;
   protected _ventas: number;
+  protected _horas: number;
   constructor(
     id: string,
     nombre: string,
@@ -9,11 +10,13 @@ export class Empleado extends Persona {
     telefono: number,
     email: string,
     puesto: string,
-    ventas: number
+    ventas: number,
+    horas: number,
   ) {
     super(id, nombre, direccion, telefono, email);
     this._puesto = puesto;
     this._ventas = ventas;
+    this._horas = horas;
   }
   get puesto() {
     return this._puesto;
@@ -21,21 +24,7 @@ export class Empleado extends Persona {
   get ventas() {
     return this._ventas;
   }
-
-  get salario() {
-    switch (this._puesto) {
-      case "Vendedor":
-        return 800;
-      case "Comercial":
-        return 900;
-      case "Transporte":
-        return 850;
-    }
-    return 0;
-  }
-  todo() {
-    return `${super.todo()},\n    Salario: ${this.salario}, \n    Puesto: ${
-      this.puesto
-    }`;
+  get salario(){
+    return this._horas * 8
   }
 }
