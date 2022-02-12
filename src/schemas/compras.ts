@@ -5,7 +5,7 @@ const compraSchema = new Schema({
     type: String,
     unique: true
   },
-  _nombreCliente: {
+  _idCliente: {
     type: String
   },
   _idProducto: {
@@ -22,7 +22,7 @@ const compraSchema = new Schema({
 export type tCompra = {
   //exporta tipo compra
   _id: string | null;
-  _nombreCliente: string | null;
+  _idCliente: string | null;
   _idProducto: string | null;
   _coste: number | null;
   _fecha: Date | null;
