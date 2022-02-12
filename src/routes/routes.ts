@@ -282,10 +282,11 @@ class Routes {
   private getSalario = async (req: Request, res: Response) => {
     let tmpEmpleado: Empleado
     let dEmpleado: tEmpleado2
-    let arraySalario: Array<tSalario>
+    let arraySalario: Array<tSalario> = []
+    console.log('hola');
+    
       await db.conectarBD()
         .then(async (mensaje) => {
-          const id = req.params.id
           console.log(mensaje)
           const query = await EmpleadoDB.find({});
           for (dEmpleado of query) {
@@ -299,18 +300,18 @@ class Routes {
               dEmpleado._horas)
 
             let salario = tmpEmpleado.salario()
-
+            
             let oSalario: tSalario = {
               _id: null,
               _nombre: null,
               _salario: null
-          }
+            }
             oSalario._id = tmpEmpleado.id
             oSalario._nombre = tmpEmpleado.nombre
             oSalario._salario = salario
             arraySalario.push(oSalario)
           }
-        
+          
           res.json(arraySalario)
         })
         .catch((mensaje) => {
@@ -324,6 +325,7 @@ class Routes {
   // RUTAS
   misRutas() {
     // Listar
+    this._router.get('/empleados/salario', this.getSalario)
     this._router.get('/empleados', this.getEmpleados)
     this._router.get('/clientes', this.getClientes)
     this._router.get('/empleados/:id', this.getEmpleadoId)
@@ -332,7 +334,6 @@ class Routes {
     this._router.get('/liquidos', this.getLiquidos)
     this._router.get('/dispositivos/:id', this.getDispositivoId)
     this._router.get('/liquidos/:id', this.getLiquidoId)
-    this._router.get('/empleados/salario', this.getSalario)
     // Crear
     this._router.post('/empleados/addEmpleado', this.addEmpleado)
     this._router.post('/clientes/addCliente', this.addCliente)
