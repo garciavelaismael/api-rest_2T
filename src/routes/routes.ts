@@ -231,6 +231,36 @@ class Routes {
     await db.desconectarBD()
 }
 
+  // Buscar dispositivo
+  private getDispositivoId = async (req: Request, res: Response) => {
+    await db.conectarBD()
+    .then(async (mensaje) => {
+    const id = req.params.id
+    console.log(mensaje)
+    const query = await DispositivoDB.findOne({ _id: id });
+    res.json(query)
+    })
+    .catch((mensaje) => {
+      res.send(mensaje)
+    } )
+    await db.desconectarBD()
+}
+
+  // Buscar liquido
+  private getLiquidoId = async (req: Request, res: Response) => {
+    await db.conectarBD()
+    .then(async (mensaje) => {
+    const id = req.params.id
+    console.log(mensaje)
+    const query = await LiquidoDB.findOne({ _id: id });
+    res.json(query)
+    })
+    .catch((mensaje) => {
+      res.send(mensaje)
+    } )
+    await db.desconectarBD()
+}
+
 // RUTAS
   misRutas() {
     // Listar
@@ -240,6 +270,8 @@ class Routes {
     this._router.get('/clientes/:id', this.getClienteId)
     this._router.get('/dispositivos', this.getDispositivos)
     this._router.get('/liquidos', this.getLiquidos)
+    this._router.get('/dispositivos/:id', this.getDispositivoId)
+    this._router.get('/liquidos/:id', this.getLiquidoId)
     // Crear
     this._router.post('/empleados/addEmpleado', this.addEmpleado)
     this._router.post('/clientes/addCliente', this.addCliente)
