@@ -302,7 +302,8 @@ class Routes {
 
             let oSalario: tSalario = {
               _id: null,
-              _salario: null,
+              _nombre: null,
+              _salario: null
           }
             oSalario._id = tmpEmpleado.id
             oSalario._salario = salario

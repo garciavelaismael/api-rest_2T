@@ -59,6 +59,7 @@ export type tEmpleado2 = {
 
 export type tSalario = {
   _id: string | null;
+  _nombre: string | null;
   _salario: number | null;
 };
 
