@@ -13,6 +13,9 @@ const compraSchema = new Schema({
   },
   _coste: {
     type: Number
+  },
+  _fecha: {
+    type: Date
   }
 });
 
@@ -22,6 +25,7 @@ export type tCompra = {
   _nombreCliente: string | null;
   _idProducto: string | null;
   _coste: number | null;
+  _fecha: Date | null;
 };
 
 export const CompraDB = model("compras", compraSchema)
