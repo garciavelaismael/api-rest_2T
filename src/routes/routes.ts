@@ -306,10 +306,12 @@ class Routes {
               _salario: null
           }
             oSalario._id = tmpEmpleado.id
+            oSalario._nombre = tmpEmpleado.nombre
             oSalario._salario = salario
             arraySalario.push(oSalario)
           }
-          res.json(query)
+        
+          res.json(arraySalario)
         })
         .catch((mensaje) => {
           res.send(mensaje)
