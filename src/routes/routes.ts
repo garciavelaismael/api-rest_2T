@@ -261,6 +261,26 @@ class Routes {
     await db.desconectarBD()
 }
 
+private addCompra = async (req: Request, res: Response) => {
+  const { id, idCliente, idProducto, coste } = req.body
+  let fecha: Date = new Date()
+  await db.conectarBD()
+  const dSchema = {
+    _id: id,
+    _idCliente: idCliente,
+    _idProducto: idProducto,
+    _coste: coste,
+    _fecha: fecha
+  }
+  const oSchema = new CompraDB(dSchema)
+  await oSchema.save()
+    .then((doc: any) => res.send('Has guardado el archivo:\n' + doc))
+    .catch((err: any) => res.send('Error: ' + err))
+
+  db.desconectarBD()
+}
+
+
 // RUTAS
   misRutas() {
     // Listar
@@ -275,6 +295,7 @@ class Routes {
     // Crear
     this._router.post('/empleados/addEmpleado', this.addEmpleado)
     this._router.post('/clientes/addCliente', this.addCliente)
+    this._router.post('/addCompra', this.addCompra)
     // Actualizar
     this._router.put('/empleados/update/:id', this.updateEmpleado)
     this._router.put('/clientes/update/:id', this.updateCliente)

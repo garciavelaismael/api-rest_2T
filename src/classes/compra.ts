@@ -7,11 +7,11 @@ export class Compra {
     protected _coste: number;
     protected _idProducto: string;
 
-    constructor(_id: string, _idCliente: string, _coste: number, _idProducto: string) {
-      this._id = _id;
-      this._idCliente = _idCliente;
-      this._coste = _coste;
-      this._idProducto = _idProducto;
+    constructor(id: string, idCliente: string, coste: number, idProducto: string) {
+      this._id = id;
+      this._idCliente = idCliente;
+      this._coste = coste;
+      this._idProducto = idProducto;
     }
 
     get getId() {
@@ -23,6 +23,8 @@ export class Compra {
     get getProductos() {
       return this._idProducto;
     }
+
+    
   
     todoCompra() {
       return `ID: ${this._id}, 
