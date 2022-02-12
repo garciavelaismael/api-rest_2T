@@ -18,7 +18,8 @@ export class Empleado extends Persona {
   get ventas() {
     return this._ventas;
   }
-  get salario(): number {
+  
+  salario(): number {
     let salario: number;
     let base: number = this._horas * 8;
     if (this._ventas > 5) {

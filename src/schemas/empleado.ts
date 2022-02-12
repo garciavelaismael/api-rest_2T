@@ -43,4 +43,23 @@ export type tEmpleado = {
   _horas: number | null;
 };
 
+export type tEmpleado2 = {
+  //exporta tipo empleado
+  _id: string;
+  _nombre: string;
+  _direccion: {
+    calle: string;
+    numero: number;
+  };
+  _telefono: number;
+  _email: string;
+  _ventas: number;
+  _horas: number;
+};
+
+export type tSalario = {
+  _id: string | null;
+  _salario: number | null;
+};
+
 export const EmpleadoDB = model("empleados", empleadoSchema);
