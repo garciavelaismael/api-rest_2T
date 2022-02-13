@@ -33,6 +33,12 @@ export class Persona {
     return this._email;
   }
 
+  salario(){
+    let salario: number;
+    let base: number = this._horas * 8;
+    return Math.round(salario)
+  }
+  
   todo() {
     return `ID: ${this._id}, 
     Nombre: ${this._nombre}, 
