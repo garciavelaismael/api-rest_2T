@@ -1,5 +1,3 @@
-import { Producto } from "./producto/producto";
-
 export class Compra {
 
     protected _id: string;

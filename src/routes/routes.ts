@@ -260,6 +260,7 @@ class Routes {
     await db.desconectarBD()
   }
 
+  // Add compra
   private addCompra = async (req: Request, res: Response) => {
     const { id, idCliente, idProducto, coste } = req.body
     let fecha: Date = new Date()
@@ -279,6 +280,7 @@ class Routes {
     db.desconectarBD()
   }
 
+  // Calcular salario
   private getSalario = async (req: Request, res: Response) => {
     let tmpEmpleado: Empleado
     let dEmpleado: tEmpleado2
@@ -319,8 +321,6 @@ class Routes {
         })
     await db.desconectarBD()
   }
-
-
 
   // RUTAS
   misRutas() {
